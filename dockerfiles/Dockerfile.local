@@ -1,0 +1,42 @@
+FROM node:18
+
+RUN echo "deb http://deb.debian.org/debian/ buster main" > /etc/apt/sources.list
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends postgresql-client && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/src/app
+
+COPY --chown=node:node package*.json ./
+
+RUN npm install
+
+RUN npm fund
+
+COPY --chown=node:node . .
+
+ENV NODE_ENV=local \
+    DB_HOST=172.17.0.1 \
+    DB_PORT=5432 \
+    DB_USERNAME=creds_manager_user \
+    DB_PASSWORD=Fayser17 \
+    DB_DATABASE=creds_manager
+
+RUN npm run migration:run
+
+RUN npm run build
+
+USER root
+
+RUN chown -R node:node /usr/src/app
+RUN chown -R node:node /usr/src/app/dist/infrastructure
+RUN chmod +x ./scripts/bash/bulk_data.sh
+
+
+USER node
+
+EXPOSE 4500
+
+CMD ["node", "./dist/main.js"]

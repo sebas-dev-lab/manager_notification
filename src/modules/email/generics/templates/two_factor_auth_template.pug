@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+  link(href="https://fonts.googleapis.com/css?family=Gotham:400,500,700", rel="stylesheet")
+  body(style="font-family:'Gotham', sans-serif;")
+
+    .container(style="width: 500px; margin: 70px auto 0; text-align: center;")
+
+      .image
+        img(src=`data:image/png;base64,${data.imageData}`, alt="cuarentena-img", style="width: 200px; height: 50px;")
+
+      h2(style="text-align: center; font-weight: 600;")
+        |#{data.title}
+
+      .text(style="text-align: justify; font-weight: 20px")
+        p(style="margin-top: 10px; margin-bottom: 10px; color: #41404699; font-size: 16px; font-weight: 400;") 
+          | Código:
+
+        p(style="color: #41404699; font-size: 16; font-weight: 20px")
+          |#{data.description}
+
+        hr(style="border: 1px solid #ccc; color: #41404626; margin-top: 70px; margin-bottom: 20px;")
+
+      .image
+
+        .copyright(style="text-align: center; font-size: 0.8em; font-weight: 600;")
+          p(style="margin-top: 30px; margin-bottom: 10px; color: #41404699;")
+            | Ding Technology #{data.year} ©. All rights reserved.
