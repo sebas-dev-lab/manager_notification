@@ -19,7 +19,6 @@ export const envs_server_config = {
   assets_document: process.env.SERVER_ASSETS_DOCUMENTS_FILES,
 };
 
-
 export const rabbitmq_envs = {
   urls: process.env.RABBIT_URLS,
   queue: process.env.RABBIT_QUEUE,
@@ -27,12 +26,11 @@ export const rabbitmq_envs = {
   hostname: process.env.RABBIT_HOST,
   username: process.env.RABBITMQ_DEFAULT_USER,
   password: process.env.RABBITMQ_DEFAULT_PASS,
-
-}
+};
 
 export const dingtech_eamil_config = {
   host: process.env.SERVICE_DING_MAIL_HOST,
   port: process.env.SERVICE_DING_MAIL_PORT,
   user: process.env.SERVICE_DING_MAIL_USER,
   pass: process.env.SERVICE_DING_MAIL_PASS,
-}
+};

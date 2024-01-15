@@ -29,23 +29,23 @@ async function bootstrap() {
   // Logger Middleware
   app.use(morganMiddleware);
 
-
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
-      urls: [{
-        port: Number(rabbitmq_envs.port),
-        hostname: rabbitmq_envs.hostname,
-        password: rabbitmq_envs.password,
-        username: rabbitmq_envs.username,
-      }],
+      urls: [
+        {
+          port: Number(rabbitmq_envs.port),
+          hostname: rabbitmq_envs.hostname,
+          password: rabbitmq_envs.password,
+          username: rabbitmq_envs.username,
+        },
+      ],
       queue: rabbitmq_envs.queue,
       queueOptions: {
         durable: false,
       },
     },
   });
-
 
   await app.startAllMicroservices();
   // Listen on the main server

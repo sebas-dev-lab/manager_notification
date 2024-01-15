@@ -19,7 +19,7 @@ import { dingtech_eamil_config } from 'src/infrastructure/envs/server.envs';
       },
       template: {
         dir: __dirname + './template/notification',
-        adapter: new PugAdapter({ inlineCssEnabled: true, }),
+        adapter: new PugAdapter({ inlineCssEnabled: true }),
         options: {
           strict: true,
         },
