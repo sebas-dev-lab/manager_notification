@@ -30,6 +30,7 @@ export const rabbitmq_envs = {
 
 export const dingtech_eamil_config = {
   host: process.env.SERVICE_DING_MAIL_HOST,
+  secure: Number(process.env.SERVICE_DING_MAIL_SECURE) === 1 ? true : false,
   port: process.env.SERVICE_DING_MAIL_PORT,
   user: process.env.SERVICE_DING_MAIL_USER,
   pass: process.env.SERVICE_DING_MAIL_PASS,

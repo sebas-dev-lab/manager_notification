@@ -7,4 +7,7 @@ export
 run_local:
 	bash ./init.sh
 
+mailcatcher:
+	bash ./mailcatcher.sh
+
 

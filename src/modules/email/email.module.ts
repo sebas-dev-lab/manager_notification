@@ -11,11 +11,13 @@ import { dingtech_eamil_config } from 'src/infrastructure/envs/server.envs';
       transport: {
         host: String(dingtech_eamil_config.host),
         port: Number(dingtech_eamil_config.port),
-        secure: true,
-        auth: {
-          user: dingtech_eamil_config.user,
-          pass: dingtech_eamil_config.pass,
-        },
+        secure: dingtech_eamil_config.secure,
+        ...(dingtech_eamil_config.secure && {
+          auth: {
+            user: dingtech_eamil_config.user,
+            pass: dingtech_eamil_config.pass,
+          },
+        }),
       },
       template: {
         dir: __dirname + './template/notification',
